@@ -1,0 +1,36 @@
+{
+  "name": "@openclaw/gateway-monitor",
+  "version": "1.0.0",
+  "description": "OpenClaw Gateway monitor modules - system stats, AI usage tracking, relay connection",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsx src/start.ts",
+    "stop": "tsx src/stop.ts",
+    "build": "tsc",
+    "dev": "tsx src/dev.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "openclaw",
+    "monitor",
+    "gateway"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "json5": "^2.2.3",
+    "qrcode-terminal": "^0.12.0",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.2.1",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.expo/
+*.tsbuildinfo
+
+# Cloudflare Workers
+.wrangler/
+.dev.vars
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# iOS/Android build artifacts
+ios/
+android/
+
+# Electron packaging
+desktop/release/
+desktop/dist/

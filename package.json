@@ -1,0 +1,17 @@
+{
+  "name": "clawface",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClawFace Gateway - macOS menu bar app for monitoring system health and AI spending",
+  "workspaces": [
+    "shared",
+    "gateway",
+    "desktop"
+  ],
+  "scripts": {
+    "gateway:dev": "npm run dev --workspace=gateway",
+    "desktop:dev": "npm run dev --workspace=desktop",
+    "desktop:dist": "npm run dist --workspace=desktop"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>ClawFace Gateway</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Arrow pointing to tray icon (outside panel so it doesn't clip) -->
+  <div class="arrow"></div>
+
+  <div id="panel">
+    <!-- Header: status dot + hostname -->
+    <div class="header">
+      <span class="status-dot" id="gateway-dot"></span>
+      <span class="status-label" id="gateway-label">Starting...</span>
+      <span class="hostname" id="hostname"></span>
+    </div>
+
+    <!-- System metrics bars -->
+    <div class="section" id="metrics-section">
+      <div class="metric-row">
+        <span class="metric-label">CPU</span>
+        <div class="bar"><div class="bar-fill" id="cpu-bar"></div></div>
+        <span class="metric-value" id="cpu-val">--</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Memory</span>
+        <div class="bar"><div class="bar-fill" id="mem-bar"></div></div>
+        <span class="metric-value" id="mem-val">--</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Disk</span>
+        <div class="bar"><div class="bar-fill" id="disk-bar"></div></div>
+        <span class="metric-value" id="disk-val">--</span>
+      </div>
+    </div>
+
+    <!-- Detail rows -->
+    <div class="section" id="details-section">
+      <div class="detail-row">
+        <span class="detail-label">Temperature</span>
+        <span class="detail-value" id="temp-val">--</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Network</span>
+        <span class="detail-value" id="net-val">-- / --</span>
+      </div>
+    </div>
+
+    <!-- OpenClaw expandable section -->
+    <div class="section expandable-section" id="openclaw-section">
+      <div class="expandable-header" id="openclaw-header">
+        <span class="chevron">&#9656;</span>
+        <span class="expandable-title">OpenClaw</span>
+        <span class="expandable-summary" id="openclaw-summary">--</span>
+      </div>
+      <div class="expandable-details" id="openclaw-details">
+        <div class="detail-row">
+          <span class="detail-label">Status</span>
+          <span class="detail-value" id="oc-status">--</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Uptime</span>
+          <span class="detail-value" id="oc-uptime">--</span>
+        </div>
+        <div id="oc-agents-container"></div>
+        <div class="detail-row">
+          <span class="detail-label">Channels</span>
+          <span class="detail-value" id="oc-channels">--</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Sessions</span>
+          <span class="detail-value" id="oc-sessions">--</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Context</span>
+          <span class="detail-value" id="oc-context">--</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Tokens</span>
+          <span class="detail-value" id="oc-tokens">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Usage expandable section -->
+    <div class="section expandable-section" id="ai-section">
+      <div class="expandable-header" id="ai-header">
+        <span class="chevron">&#9656;</span>
+        <span class="expandable-title">AI Usage</span>
+        <span class="expandable-summary accent" id="ai-summary">--</span>
+      </div>
+      <div class="expandable-details" id="ai-details">
+        <div id="ai-providers-container"></div>
+        <div class="detail-row">
+          <span class="detail-label">This Month</span>
+          <span class="detail-value accent" id="ai-month">--</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Requests</span>
+          <span class="detail-value" id="ai-requests">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pairing section (shown when not paired) -->
+    <div class="section pairing-section" id="pairing-section">
+      <div class="pair-label">Pair with ClawFace app</div>
+      <img class="pair-qr" id="pair-qr" alt="QR Code">
+      <div class="pair-code" id="pair-code">CLAW-XXXX</div>
+      <div class="pair-hint">Scan QR or enter code in the iOS app</div>
+    </div>
+
+    <!-- Unpair section (shown when paired) -->
+    <div class="section unpair-section" id="unpair-section">
+      <span class="unpair-btn" id="unpair-btn">Unpair Device</span>
+    </div>
+
+    <!-- Footer link -->
+    <div class="footer">
+      <a href="#" id="clawface-link">ClawFace.app</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

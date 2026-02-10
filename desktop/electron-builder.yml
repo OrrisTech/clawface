@@ -1,0 +1,125 @@
+appId: app.clawface.gateway
+productName: ClawFace Gateway
+copyright: Copyright (c) 2026 SeekClaw
+
+mac:
+  category: public.app-category.utilities
+  icon: src/assets/app-icon.icns
+  target:
+    - target: dmg
+      arch:
+        - arm64
+  hardenedRuntime: true
+  gatekeeperAssess: false
+
+dmg:
+  title: ClawFace Gateway
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+directories:
+  output: release
+
+files:
+  - dist/**/*
+  - src/renderer/**/*
+  - src/assets/**/*
+  - src/main/preload.cjs
+  # Exclude source files
+  - "!**/*.ts"
+  - "!**/*.map"
+  - "!src/main/**/*.ts"
+  # Exclude documentation and metadata
+  - "!**/*.md"
+  - "!**/*.markdown"
+  - "!**/LICENSE"
+  - "!**/LICENSE.*"
+  - "!**/CHANGELOG*"
+  - "!**/HISTORY*"
+  - "!**/CONTRIBUTING*"
+  - "!**/SECURITY*"
+  - "!**/AUTHORS*"
+  - "!**/.claude/**"
+  - "!**/.github/**"
+  - "!**/.eslint*"
+  - "!**/.prettier*"
+  - "!**/tsconfig.json"
+  # Exclude build tools that aren't needed at runtime
+  - "!**/node_modules/typescript/**"
+  - "!**/node_modules/prebuild-install/**"
+  - "!**/node_modules/yargs/**"
+  - "!**/node_modules/yargs-parser/**"
+  - "!**/node_modules/tar-fs/**"
+  - "!**/node_modules/tar-stream/**"
+  - "!**/node_modules/node-abi/**"
+  - "!**/node_modules/detect-libc/**"
+  - "!**/node_modules/github-from-package/**"
+  - "!**/node_modules/tunnel-agent/**"
+  - "!**/node_modules/simple-get/**"
+  - "!**/node_modules/simple-concat/**"
+  - "!**/node_modules/decompress-response/**"
+  - "!**/node_modules/mimic-response/**"
+  - "!**/node_modules/expand-template/**"
+  - "!**/node_modules/napi-build-utils/**"
+  - "!**/node_modules/mkdirp-classic/**"
+  - "!**/node_modules/fs-constants/**"
+  - "!**/node_modules/pump/**"
+  - "!**/node_modules/end-of-stream/**"
+  - "!**/node_modules/once/**"
+  - "!**/node_modules/wrappy/**"
+  - "!**/node_modules/rc/**"
+  - "!**/node_modules/deep-extend/**"
+  - "!**/node_modules/ini/**"
+  - "!**/node_modules/minimist/**"
+  - "!**/node_modules/strip-json-comments/**"
+  - "!**/node_modules/chownr/**"
+  # Exclude terminal-only packages (not used in Electron)
+  - "!**/node_modules/qrcode-terminal/**"
+  # Exclude better-sqlite3 source/build files (only .node binary needed)
+  - "!**/node_modules/better-sqlite3/deps/**"
+  - "!**/node_modules/better-sqlite3/src/**"
+  - "!**/node_modules/better-sqlite3/build/Release/.deps/**"
+  - "!**/node_modules/better-sqlite3/build/Release/obj/**"
+  - "!**/node_modules/better-sqlite3/binding.gyp"
+  - "!**/node_modules/better-sqlite3/build/binding.sln"
+  - "!**/node_modules/better-sqlite3/build/*.mk"
+  - "!**/node_modules/better-sqlite3/build/*.Makefile"
+  # Exclude CLI-related deps (yargs tree, cliui, etc.)
+  - "!**/node_modules/cliui/**"
+  - "!**/node_modules/wrap-ansi/**"
+  - "!**/node_modules/ansi-styles/**"
+  - "!**/node_modules/ansi-regex/**"
+  - "!**/node_modules/strip-ansi/**"
+  - "!**/node_modules/color-convert/**"
+  - "!**/node_modules/color-name/**"
+  - "!**/node_modules/emoji-regex/**"
+  - "!**/node_modules/is-fullwidth-code-point/**"
+  - "!**/node_modules/string-width/**"
+  - "!**/node_modules/camelcase/**"
+  - "!**/node_modules/decamelize/**"
+  - "!**/node_modules/find-up/**"
+  - "!**/node_modules/locate-path/**"
+  - "!**/node_modules/p-limit/**"
+  - "!**/node_modules/p-locate/**"
+  - "!**/node_modules/p-try/**"
+  - "!**/node_modules/path-exists/**"
+  - "!**/node_modules/get-caller-file/**"
+  - "!**/node_modules/require-directory/**"
+  - "!**/node_modules/require-main-filename/**"
+  - "!**/node_modules/set-blocking/**"
+  - "!**/node_modules/which-module/**"
+  - "!**/node_modules/y18n/**"
+
+# Only unpack the native .node binary (not the whole better-sqlite3 package)
+asarUnpack:
+  - "**/*.node"
+
+extraMetadata:
+  main: dist/main/main.js
+
+npmRebuild: true
