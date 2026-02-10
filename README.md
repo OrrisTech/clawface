@@ -2,6 +2,10 @@
 
 A native macOS menu bar app for monitoring your Mac's system health and AI spending. Pairs with the [ClawFace iOS app](https://clawface.app) for remote monitoring from your iPhone.
 
+<p align="center">
+  <img src="preview.png" alt="ClawFace Gateway - menu bar dropdown" width="720">
+</p>
+
 ## Download
 
 Download the latest `.dmg` from [**Releases**](https://github.com/OrrisTech/clawface/releases).
