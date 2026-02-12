@@ -1,16 +1,19 @@
 appId: app.clawface.gateway
 productName: ClawFace Gateway
-copyright: Copyright (c) 2026 SeekClaw
+copyright: Copyright (c) 2026 Orris
 
 mac:
   category: public.app-category.utilities
   icon: src/assets/app-icon.icns
+  identity: "Orris Technology Pty Ltd (K9YT36SP4B)"
   target:
     - target: dmg
       arch:
         - arm64
   hardenedRuntime: true
   gatekeeperAssess: false
+  entitlements: entitlements.mac.plist
+  entitlementsInherit: entitlements.mac.plist
 
 dmg:
   title: ClawFace Gateway

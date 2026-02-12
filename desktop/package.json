@@ -2,7 +2,7 @@
   "name": "clawface-desktop",
   "version": "1.0.0",
   "description": "ClawFace Gateway - macOS menu bar app",
-  "author": "SeekClaw",
+  "author": "Orris",
   "private": true,
   "type": "module",
   "main": "dist/main/main.js",
