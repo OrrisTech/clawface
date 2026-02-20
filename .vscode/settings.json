@@ -1,0 +1,99 @@
+{
+  // ---------------------------------------------------------------------------
+  // Editor defaults
+  // ---------------------------------------------------------------------------
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+
+  // ---------------------------------------------------------------------------
+  // File handling
+  // ---------------------------------------------------------------------------
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.mdx": "mdx"
+  },
+  "files.exclude": {
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.turbo": true
+  },
+
+  // ---------------------------------------------------------------------------
+  // TypeScript
+  // ---------------------------------------------------------------------------
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // ---------------------------------------------------------------------------
+  // ESLint
+  // ---------------------------------------------------------------------------
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.useFlatConfig": true,
+
+  // ---------------------------------------------------------------------------
+  // Tailwind CSS IntelliSense
+  // ---------------------------------------------------------------------------
+  "tailwindCSS.includeLanguages": {
+    "typescriptreact": "html",
+    "javascriptreact": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
+  // ---------------------------------------------------------------------------
+  // Language-specific overrides
+  // ---------------------------------------------------------------------------
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ---------------------------------------------------------------------------
+  // Search exclusions (keep explorer fast)
+  // ---------------------------------------------------------------------------
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.turbo": true,
+    "**/pnpm-lock.yaml": true,
+    "**/bun.lockb": true,
+    "**/package-lock.json": true
+  }
+}
