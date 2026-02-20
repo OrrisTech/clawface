@@ -1,0 +1,49 @@
+# CI Pipeline -- Thin caller workflow
+# Calls reusable workflows from the OrrisTech/.github org repo.
+# Synced to all repos via files-to-sync.yml.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+# Permissions needed by reusable workflows:
+# - contents:read — checkout code
+# - pull-requests:write — react-doctor posts PR comments
+permissions:
+  contents: read
+  pull-requests: write
+
+# Cancel in-progress runs for the same branch/PR to save runner minutes
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-typecheck:
+    name: Lint & Type Check
+    uses: OrrisTech/.github/.github/workflows/ci-lint-typecheck.yml@main
+    secrets: inherit
+
+  test:
+    name: Test
+    uses: OrrisTech/.github/.github/workflows/ci-test.yml@main
+    secrets: inherit
+
+  build:
+    name: Build
+    needs: [lint-typecheck]
+    uses: OrrisTech/.github/.github/workflows/ci-build.yml@main
+    secrets: inherit
+
+  security:
+    name: Security Audit
+    uses: OrrisTech/.github/.github/workflows/ci-security.yml@main
+    secrets: inherit
+
+  react-doctor:
+    name: React Doctor
+    if: github.event_name == 'pull_request'
+    uses: OrrisTech/.github/.github/workflows/ci-react-doctor.yml@main
+    secrets: inherit
