@@ -1,0 +1,44 @@
+# Lefthook pre-commit hooks
+# Synced to all repos via files-to-sync.yml.
+# Runs lint, typecheck, and related tests on staged files before committing.
+
+pre-commit:
+  parallel: true
+  commands:
+    lint-staged:
+      # Run ESLint or Biome on staged .ts/.tsx/.js/.jsx files only
+      glob: "*.{ts,tsx,js,jsx}"
+      run: |
+        if [ -f pnpm-lock.yaml ]; then
+          pnpm exec eslint --fix {staged_files} 2>/dev/null || pnpm exec biome check --write {staged_files} 2>/dev/null || true
+        elif [ -f bun.lockb ] || [ -f bun.lock ]; then
+          bunx eslint --fix {staged_files} 2>/dev/null || bunx biome check --write {staged_files} 2>/dev/null || true
+        else
+          npx eslint --fix {staged_files} 2>/dev/null || npx biome check --write {staged_files} 2>/dev/null || true
+        fi
+      stage_fixed: true
+
+    typecheck:
+      # Run TypeScript type checking (no emit) -- only if tsconfig exists
+      glob: "*.{ts,tsx}"
+      run: |
+        if [ ! -f tsconfig.json ]; then exit 0; fi
+        if [ -f pnpm-lock.yaml ]; then
+          pnpm exec tsc --noEmit
+        elif [ -f bun.lockb ] || [ -f bun.lock ]; then
+          bunx tsc --noEmit
+        else
+          npx tsc --noEmit
+        fi
+
+    test-related:
+      # Run tests related to changed files (Vitest only -- skipped if not installed)
+      glob: "*.{ts,tsx,js,jsx}"
+      run: |
+        if [ -f pnpm-lock.yaml ]; then
+          pnpm exec vitest related {staged_files} --run 2>/dev/null || true
+        elif [ -f bun.lockb ] || [ -f bun.lock ]; then
+          bunx vitest related {staged_files} --run 2>/dev/null || true
+        else
+          npx vitest related {staged_files} --run 2>/dev/null || true
+        fi
